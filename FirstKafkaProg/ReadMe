@@ -1,0 +1,12 @@
+Run the application
+To test this application you can run the code in Listings 1 and 2 from your IDE, or you can follow these steps:
+
+Start the Zookeeper server by executing the command: bin/zookeeper-server-start.sh config/zookeeper.properties.
+Start the Kafka server by executing: bin/kafka-server-start.sh config/server.properties.
+Create a test topic that you can use for testing: bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic javaworld.
+Download the sample code, KafkaAPIClient, by executing the command: git clone https://github.com/sdpatil/KafkaAPIClient.git.
+Compile the code and create a fat JAR with the command: mvn clean compile assembly:single.
+Start the consumer: java -cp target/KafkaAPIClient-1.0-SNAPSHOT-jar-with-dependencies.jar com.spnotes.kafka.simple.Consumer test group1.
+Start the producer: java -cp target/KafkaAPIClient-1.0-SNAPSHOT-jar-with-dependencies.jar com.spnotes.kafka.simple.Producer test.
+Enter a message in the producer console and check to see whether that message appears in the consumer. Try a few messages.
+Type exit in the consumer and producer consoles to close them.
